@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>傲世群英传</title>
+    <script src="../dist/index.js"></script>
+</head>
+
+<body>
+    <div id="div1" style="background:red;width:100px;height:100px;position:relative;z-index:auto">
+        sdsfsdf
+
+        <div style="background:black;width:100px;height:100px;position:relative;z-index:2">
+            第二个
+        </div>
+        <script>
+            div1 = document.getElementById("div1"),
+                div1.onclick = function() {
+                    console.log("div1")
+                }
+            console.log("div2")
+
+            function f1(callback, value) {
+                console.log("step1")
+                callback(value)
+            }
+            f1(function(value) {
+                console.log(value)
+            }, "step2")
+            console.log("step3")
+                //执行结果 ：step1，step2，step3 （同步的回调函数）
+                //回调函数跟同步和异步并没有直接的联系，回调只是一种实现方式。既可以有同步回调，也可以有异步回调，还可以有事件处理回调和延迟函数回调，
+        </script>
+</body>
+
+</html>

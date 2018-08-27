@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>解构赋值</title>
+</head>
+
+<body>
+    <script>
+        //------------数组解构赋值----------------------
+        //解构赋值的写法，本质上属于"模式匹配"，只要等号两边的模式相同，左边的变量就会被赋予对应的值.如果解构不成功，变量的值就等于undefined。变量的取值是由它的位置决定的
+        let [a, b, c] = [1, 2, 3]
+        //======================================
+        // let [foo, [
+        //     [bar], baz
+        // ]] = [1, [
+        //     [2], 3
+        // ]]
+        // console.log(foo)
+        // ========================================
+        /*let [bar, foo] = [2];
+        console.log(bar) //2
+        console.log(foo) //undefined*/
+        //==============================================
+        let [head, food, ...tail] = [1, 2, 3, 4]
+        console.log(head) //1
+        console.log(food) //2
+        console.log(tail) //[3,4]
+
+        //解构赋值指定默认值 ，ES6 内部使用严格相等运算符（===），判断一个位置是否有值。所以，只有当一个数组成员严格等于undefined，默认值才会生效。
+        let [x = 1] = []
+        console.log(x) // x=1
+        let [y = 1] = [null]
+        console.log(y) //y=null
+            //如果一个数组成员是null， 默认值就不会生效， 因为null不严格等于undefined。
+            /*   let [x = 1, y = x] = []; // x=1; y=1
+               let [x = 1, y = x] = [2]; // x=2; y=2
+               let [x = 1, y = x] = [1, 2]; // x=1; y=2
+               let [x = y, y = 1] = []; // ReferenceError: y is not defined*/
+
+
+        //-----------------对象解构赋值------------------------------
+        //对象的解构：变量名必须与属性名相同才能被赋值而与位置无关
+        let {
+            bar,
+            foo
+        } = {
+            foo: "aaa",
+            bar: "bbbb"
+        }
+        console.log(bar); // bbbb
+        console.log(foo); //aaa
+        let {
+            toString: s
+        } = 123;
+        console.log(s)
+    </script>
+</body>
+
+</html>

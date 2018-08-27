@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>傲世群英传</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var a = []
+    for (var i = 0; i < 10; i++) {
+        a[i] = function() {
+            console.log(i)
+        }
+        a[i]()
+    }
+    a[6]() //10
+
+    //======================================
+    var b = []
+    for (let j = 0; j < 10; j++) {
+        b[j] = function() {
+            console.log(j)
+        }
+    }
+    b[6]() //6
+        //let 变量i只在本轮循环有效，每次循环的i都是一个新的变量
+
+    //==============================================
+
+    for (let j = 0; j < 3; j++) {
+        // console.log(j) //报错
+        let j = 'abc'
+    }
+    //变量一定要先声明再用，否则会报错
+    for (let j = 0; j < 3; j++) {
+        let j = 'abc'
+        console.log(j) //打印三次 ’abc'
+            // console.log(j)
+    }
+    //for循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
+    //函数内部的变量i与循环变量i不在同一个作用域，有各自单独的作用域
+
+
+    //==============================
+
+    var tamp = "abc";
+
+    function abc() {
+        console.log(tamp) //报错,原因在声明变量前使用
+        let tamp = 1
+    }
+    //'虽然tamp是全局变量,但是只要块级作用域内存在let命令， 它所声明的变量就“ 绑定”（ binding） 这个区域， 不再受外部的影响。
+    //意思就是只要在块级作用域中是存在let对这个变量的声明，那该变量就必须遵循let 声明变量的规则
+
+
+    function f1() {
+        let n = 5;
+        if (true) {
+            console.log(n) //报错
+            let n = 10;
+        }
+        console.log(n); // 5
+    }
+    f1()
+
+
+    function f1() {
+        let n = 5;
+        if (true) {
+            console.log(n) //报错
+            let n = 10;
+        }
+        console.log(n); // 5
+    }
+
+    function f2() {
+        //外层作用域无法读取内层作用域的变量
+        {
+            let insane = 'Hello World'
+        }
+        console.log(insane); // 报错
+    };
+
+    function f3() {
+        // 内层作用域可以定义外层作用域的同名变量。
+        let insane = 'Hello World'; {
+            let insane = 'Hello World'
+        }
+    }
+</script>
+
+</html>
