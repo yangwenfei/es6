@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <script>
+        // 工厂模式（字面量）
+        function Person(name, age) {
+            let obj = new Object();
+            obj.name = name;
+            obj.age = age;
+            obj.fn = function() {
+                console.log(this.age)
+            }
+            return obj
+        }
+        var o1 = Person("tony", 21);
+        var o2 = Person("angle", 22)
+        console.log(o1.name)
+        o1.fn();
+        console.log(o1.fn == o2.fn) //false
+
+
+        //构造函数模式（new关键字）
+        function Person1(name, age) {
+            this.name = name;
+            this.age = age;
+            this.fn = function() {
+                console.log(this.age)
+            }
+        }
+        var a = new Person1("lisa", 18)
+        var b = new Person1("same", 22)
+        console.log(a.name)
+        a.fn()
+            //new 关键字的作用是改变this指向，this指向a对象。a就是new关键字创建的一个对象实例
+        console.log(a.fn == b.fn) //false
+            //原型链
+        function Person2(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person2.prototype.fn = function() {
+            console.log(this.age)
+        }
+        var m = new Person2("aa", 22)
+        console.log(m.name);
+        m.fn()
+    </script>
+</body>
+
+</html>

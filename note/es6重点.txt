@@ -1,0 +1,7 @@
+
+优先级promise\async\ ... \ export \ 装饰器
+
+let和const变量
+
+变量的解构赋值（数组，json对象）
+字符串模板

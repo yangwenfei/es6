@@ -1,0 +1,27 @@
+<html>
+
+< !DOCTYPE html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>傲世群英传</title>
+    </head>
+
+    <body>
+        <script>
+            console.log("a")
+
+            function* fn() {
+                yield "b"
+                yield "c"
+            }
+            var test = fn()
+            console.log(test.next())
+            console.log("d")
+            console.log(test.next())
+                // a b d c
+                // 当yield打印了之后接着执行后面的console.log("d"),打印出了
+        </script>
+    </body>
+
+</html>
